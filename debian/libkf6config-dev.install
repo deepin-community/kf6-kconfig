@@ -1,0 +1,8 @@
+usr/include/KF6/KConfig/kconfig_version.h
+usr/include/KF6/KConfigCore/
+usr/include/KF6/KConfigGui/
+usr/include/KF6/KConfigQml/
+usr/lib/*/cmake/KF6Config/
+usr/lib/*/libKF6ConfigCore.so
+usr/lib/*/libKF6ConfigGui.so
+usr/lib/*/libKF6ConfigQml.so

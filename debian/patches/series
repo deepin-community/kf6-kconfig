@@ -1,0 +1,3 @@
+Allow-packagers-set-kconfig_compiler-install-dir.patch
+tests-skip-flaky-KConfigTest-testLocalDeletion.diff
+tests-skip-flaky-KConfigTest-testKdeglobalsVsDefault.diff

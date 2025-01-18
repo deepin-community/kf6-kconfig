@@ -1,0 +1,3 @@
+usr/bin/kreadconfig6
+usr/bin/kwriteconfig6
+usr/lib/*/libexec/kf6/kconf_update

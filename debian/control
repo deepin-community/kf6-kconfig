@@ -1,15 +1,234 @@
-Source: template-repository
-Section: unknown
+Source: kf6-kconfig
+Section: libs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Aurélien COUDERC <coucouf@debian.org>,
+           Patrick Franz <deltaone@debian.org>,
+Build-Depends: debhelper-compat (= 13),
+               dh-sequence-kf6,
+               dh-sequence-pkgkde-symbolshelper,
+               dh-sequence-qmldeps,
+               cmake (>= 3.16~),
+               dbus-x11 <!nocheck>,
+               doxygen (>= 1.8.13~),
+               extra-cmake-modules (>= 6.10.0~),
+               libxkbcommon-dev,
+               qt6-base-dev (>= 6.6.0~),
+               qt6-declarative-dev (>= 6.6.0~),
+               qt6-declarative-private-dev,
+               qt6-tools-dev (>= 6.5.0~),
+               xauth <!nocheck>,
+               xvfb <!nocheck>,
+Standards-Version: 4.7.0
+Homepage: https://invent.kde.org/frameworks/kconfig
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/kde/kf6-kconfig
+Vcs-Git: https://salsa.debian.org/qt-kde-team/kde/kf6-kconfig.git
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: libkf6config-bin
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Description: configuration settings framework for Qt
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore and KConfigGui.
+ .
+ KConfigCore provides access to the configuration files themselves. It
+ features:
+ .
+  - centralized definition: define your configuration in an XML file
+  and use `kconfig_compiler` to generate classes to read and write
+  configuration entries.
+  - lock-down (kiosk) support.
+ .
+ KConfigGui provides a way to hook widgets to the configuration so
+ that they are automatically initialized from the configuration and
+ automatically propagate their changes to their respective
+ configuration files.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains runtime files for KConfig.
+
+Package: libkf6config-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: configuration settings framework for Qt
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore and KConfigGui.
+ .
+ KConfigCore provides access to the configuration files themselves. It
+ features:
+ .
+  - centralized definition: define your configuration in an XML file
+  and use `kconfig_compiler` to generate classes to read and write
+  configuration entries.
+  - lock-down (kiosk) support.
+ .
+ KConfigGui provides a way to hook widgets to the configuration so
+ that they are automatically initialized from the configuration and
+ automatically propagate their changes to their respective
+ configuration files.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains the translations.
+
+Package: libkf6config-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libkf6config-bin (= ${binary:Version}),
+         libkf6config-dev-bin (= ${binary:Version}),
+         libkf6configcore6 (= ${binary:Version}),
+         libkf6configgui6 (= ${binary:Version}),
+         libkf6configqml6 (= ${binary:Version}),
+         qml6-module-org-kde-config (= ${binary:Version}),
+         qt6-tools-dev (>= 6.5.0~),
+         ${misc:Depends},
+Recommends: libkf6config-doc (= ${source:Version}),
+Description: configuration settings framework for Qt
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore and KConfigGui.
+ .
+ KConfigCore provides access to the configuration files themselves. It
+ features:
+ .
+  - centralized definition: define your configuration in an XML file
+  and use `kconfig_compiler` to generate classes to read and write
+  configuration entries.
+  - lock-down (kiosk) support.
+ .
+ KConfigGui provides a way to hook widgets to the configuration so
+ that they are automatically initialized from the configuration and
+ automatically propagate their changes to their respective
+ configuration files.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains the development files.
+
+Package: libkf6config-dev-bin
+Section: libdevel
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Description: configuration settings framework for Qt -- binary package
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore and KConfigGui.
+ .
+ KConfigCore provides access to the configuration files themselves. It
+ features:
+ .
+  - centralized definition: define your configuration in an XML file
+  and use `kconfig_compiler` to generate classes to read and write
+  configuration entries.
+  - lock-down (kiosk) support.
+ .
+ KConfigGui provides a way to hook widgets to the configuration so
+ that they are automatically initialized from the configuration and
+ automatically propagate their changes to their respective
+ configuration files.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains the binary files for the libkf6config-dev package.
+
+Package: libkf6config-doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: configuration settings framework for Qt (documentation)
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore and KConfigGui.
+ .
+ KConfigCore provides access to the configuration files themselves. It
+ features:
+ .
+  - centralized definition: define your configuration in an XML file
+  and use `kconfig_compiler` to generate classes to read and write
+  configuration entries.
+  - lock-down (kiosk) support.
+ .
+ KConfigGui provides a way to hook widgets to the configuration so
+ that they are automatically initialized from the configuration and
+ automatically propagate their changes to their respective
+ configuration files.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains the qch documentation files.
+Section: doc
+
+Package: libkf6configcore6
+Architecture: any
+Multi-Arch: same
+Depends: libkf6config-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf6config-bin (= ${binary:Version}),
+Description: configuration settings framework for Qt
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore, KConfigGui and KConfigQml.
+ .
+ KConfigCore provides access to the configuration files themselves. It
+ features:
+ .
+  - centralized definition: define your configuration in an XML file
+  and use `kconfig_compiler` to generate classes to read and write
+  configuration entries.
+  - lock-down (kiosk) support.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains KConfigCore.
+
+Package: libkf6configgui6
+Architecture: any
+Multi-Arch: same
+Depends: libkf6config-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf6config-bin (= ${binary:Version}),
+Description: configuration settings framework for Qt
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore, KConfigGui and KConfigQml.
+ .
+ KConfigGui provides a way to hook widgets to the configuration so
+ that they are automatically initialized from the configuration and
+ automatically propagate their changes to their respective
+ configuration files.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains KConfigGui.
+
+Package: libkf6configqml6
+Architecture: any
+Multi-Arch: same
+Depends: libkf6config-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf6config-bin (= ${binary:Version}),
+Description: configuration settings framework for Qt
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore, KConfigGui and KConfigQml.
+ .
+ KConfigQml provides the Qml binding for using KConfig in Qml
+ applications.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains KConfigQml.
+
+Package: qml6-module-org-kde-config
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${qml6:Depends}, ${shlibs:Depends},
+Description: QML module for kconfig
+ KConfig provides an advanced configuration system. It is made of two
+ parts: KConfigCore, KConfigGui and KConfigQml.
+ .
+ This package is part of KDE Frameworks 6.
+ .
+ This package contains the QML module for kconfig

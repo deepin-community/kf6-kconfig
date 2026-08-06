@@ -1,3 +1,13 @@
+kf6-kconfig (6.6.0-2deepin2) unstable; urgency=medium
+
+  * Fix OBS CI build failures:
+    - Add qml6-module-qtquick to Build-Depends so that test14qml and
+      test15qml can find the QtQuick module
+    - Set UTF-8 locale in override_dh_auto_test to avoid the abort of
+      ksharedconfig_in_global_object caused by QT_FATAL_WARNINGS
+
+ -- lichenggang <lichenggang@uniontech.com>  Thu, 06 Aug 2026 15:51:19 +0800
+
 kf6-kconfig (6.6.0-2) unstable; urgency=medium
 
   * Team upload.

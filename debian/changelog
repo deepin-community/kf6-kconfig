@@ -1,4 +1,4 @@
-kf6-kconfig (6.6.0-2deepin2) unstable; urgency=medium
+kf6-kconfig (6.6.0-2deepin1) unstable; urgency=medium
 
   * Fix OBS CI build failures:
     - Add qml6-module-qtquick to Build-Depends so that test14qml and
